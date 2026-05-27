@@ -15,7 +15,7 @@ SQLALCHEMY_DATABASE_URI = os.environ.get(
 
 # redis的配置
 # 服务器
-REDIS_URL = os.environ.get('REDIS_URL_MUSICAL_COPYRIGHT') or 'redis://:xin2022@127.0.0.1:6379/9'
+REDIS_URL = os.environ.get('REDIS_URL_MUSICAL_COPYRIGHT') or 'redis://:123456@127.0.0.1:6379/0'
 # 本地
 # REDIS_URL = os.environ.get('REDIS_URL_MUSICAL_COPYRIGHT') or 'redis://:@127.0.0.1:6379/6'
 
