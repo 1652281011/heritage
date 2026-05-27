@@ -281,3 +281,27 @@ class UserService:
         except Exception as e:
             db.session.rollback()
             return False, str(e)
+        
+    @staticmethod
+    def logout(user_id, token):
+        """
+        退出登录逻辑
+        :param user_id: 用户ID
+        :param token: 当前使用的 Token
+        """
+        try:
+            # 方案 A: 如果你使用了 Redis 存储 Token (推荐)
+            redis_client = current_app.extensions['redis']
+            redis_client.delete(f"auth_token:{token}")
+            
+            # 方案 B: 如果你的 Token 是存储在 MySQL 的某个 Session 表中
+            # SessionTable.query.filter_by(token=token).delete()
+            
+            # 方案 C: 如果是简单的 JWT 且没有黑名单机制，前端直接删除 Token 即可
+            # 但为了安全，通常建议后端至少记录一个“注销”动作
+            
+            db.session.commit()
+            return True, u"退出成功"
+        except Exception as e:
+            db.session.rollback()
+            return False, str(e)

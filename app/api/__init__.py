@@ -70,6 +70,7 @@ from app.api.v1.apps.user.apply_progress import CreatorProgressResource
 from app.api.v1.apps.user.audit_apply import CreatorAuditResource
 from app.api.v1.apps.user.checkin import CheckInResource
 from app.api.v1.apps.user.detail_info import UserDetailResource
+from app.api.v1.apps.user.logout import LogoutResource
 from app.api.v1.apps.user.register import Register
 from app.api.v1.apps.user.sign_in import SignIn
 from app.api.v1.apps.user.update_info import UserInfoResource
@@ -86,6 +87,7 @@ RESOURCES = [
 
     (Register, '/v1/user/register'),
     (SignIn, '/v1/user/sign-in'),
+    (LogoutResource, '/v1/user/logout'),
     (UserDetailResource, '/v1/user/detail'),
 
     (CheckInResource, '/v1/user/checkin'),
